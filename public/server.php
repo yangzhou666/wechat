@@ -4,14 +4,18 @@ include_once "vendor/autoload.php";
 use EasyWeChat\Factory;
 
 $config = [
-    'app_id' => 'wx3cf0f39249eb0xxx',
-    'secret' => 'f1c242f4f28f735d4687abb469072xxx',
+    'app_id' => 'wx784e51f7a8c8d4c7',
+    'secret' => '3a1213284ce9b0b49c89e1b7cfaa8bb7',
     'token' => 'TestToken',
     'response_type' => 'array',
     //...
 ];
 
 $app = Factory::officialAccount($config);
+
+$app->server->push(function ($message) {
+    return "您好！测试消息!";
+});
 
 $response = $app->server->serve();
 
